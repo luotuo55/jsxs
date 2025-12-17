@@ -3,6 +3,7 @@ import { QueueVisualizer } from './components/QueueVisualizer';
 import { PracticeMatch } from './components/PracticeMatch';
 import { PracticeDoIt } from './components/PracticeDoIt';
 import { PracticeCompare } from './components/PracticeCompare';
+import { NumberLine } from './components/NumberLine';
 import { Button } from './components/Button';
 import { LessonStage } from './types';
 import { BookOpen, Calculator, PenTool, Layout, ChevronRight, ChevronLeft, Eye, Check, X, RefreshCw, Plus, Minus } from 'lucide-react';
@@ -257,7 +258,7 @@ const App: React.FC = () => {
 
   const adjustCalcEnd = (delta: number) => {
     const newVal = calcEnd + delta;
-    if (newVal > calcStart + 1 && newVal <= 20) {
+    if (newVal > calcStart + 1 && newVal <= 17) {
       setCalcEnd(newVal);
       setCalcInputs({ big: '', small: '', result: '' });
       setCalcFeedback('idle');
@@ -507,14 +508,13 @@ const App: React.FC = () => {
                       </div>
                     </div>
 
-                    <QueueVisualizer 
-                      start={calcStart} 
-                      end={calcEnd} 
+                    <NumberLine 
+                      startValue={calcStart} 
+                      endValue={calcEnd} 
                       startName={ex1StartName} 
-                      endName={ex1EndName} 
-                      mode="calculation"
-                      highlightBetween={true}
-                      maxRange={20}
+                      endName={ex1EndName}
+                      min={1}
+                      max={17}
                     />
 
                     {/* Interactive Calculation Form */}
